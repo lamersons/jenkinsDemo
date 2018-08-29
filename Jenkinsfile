@@ -7,7 +7,7 @@ def builds = job.getBuilds()
 def printClosure = {
   println("${it.getArtifactManager()?.root().exists()}")
 }
-builds.each(printClosure)
+// builds.each(printClosure)
 
 pipeline {
     agent {
