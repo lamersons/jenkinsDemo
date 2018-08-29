@@ -7,6 +7,7 @@ def builds = job.getBuilds()
 def printClosure = {
   println("${it.getArtifactManager()?.root().exists()}")
 }
+builds.each(printClosure)
 
 pipeline {
     agent {
@@ -17,10 +18,13 @@ pipeline {
     }
     stages {
         stage('Build') {
+            parameters {
+                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            }
             steps {
                 sh 'echo ">>>>> building.."'
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
-                builds.each(printClosure)
+                echo "${params.PERSON}"
             }
         }
         stage('Test') {
