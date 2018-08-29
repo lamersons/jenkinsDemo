@@ -27,7 +27,8 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh './' + mavenAppHome + '/jenkins/scripts/deliver.sh'
+                sh 'echo ${NAME}-${VERSION}.jar'
+                // sh './' + mavenAppHome + '/jenkins/scripts/deliver.sh'
             }
         }
     }
