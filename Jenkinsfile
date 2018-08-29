@@ -39,6 +39,14 @@ pipeline {
             }
         }
         stage('Deliver') {
+            agent {
+                dockerfile {
+                    filename 'Dockerfile.build'
+                    dir '.'
+                    label 'my-defined-label'
+                    additionalBuildArgs  '--build-arg version=1.0.2'
+                }
+            }
             steps {
                 sh 'echo ${NAME}-${VERSION}.jar'
                 // sh './' + mavenAppHome + '/jenkins/scripts/deliver.sh'
