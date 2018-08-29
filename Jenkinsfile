@@ -22,6 +22,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'ls -la'
                 sh 'echo ">>>>> building.."'
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
                 echo "${params.PERSON}"
