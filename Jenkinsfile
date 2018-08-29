@@ -1,7 +1,7 @@
 mavenAppHome = "simple-java-maven-app"
 
 def jen = Jenkins.getInstance();
-def job = jen.getItem(${JOB_NAME});
+def job = jen.getItem("${JOB_NAME}");
 def builds = job.getBuilds();
 //
 // def printClosure = {
