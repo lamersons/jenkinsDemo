@@ -16,11 +16,11 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
-    parameters {
-      string(name: 'PERSON', defaultValue: (2 + 2).toString(), description: 'Who should I say hello to?')
-    }
     stages {
         stage('Build') {
+            parameters {
+              string(name: 'PERSON', defaultValue: 2.toString(), description: 'Who should I say hello to?')
+            }
             steps {
                 sh 'echo ">>>>> building.."'
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
