@@ -17,7 +17,7 @@ pipeline {
         }
     }
     parameters {
-      string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+      string(name: 'PERSON', defaultValue: 2 + 2, description: 'Who should I say hello to?')
     }
     stages {
         stage('Build') {
