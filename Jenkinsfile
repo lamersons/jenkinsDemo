@@ -38,12 +38,13 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('BuildDockerImage') {
             agent {
-                dockerfile {
-                    filename 'Dockerfile.build'
-                    dir '.'
-                }
+              dockerfile true
+                // dockerfile {
+                //     filename 'Dockerfile.build'
+                //     dir '.'
+                // }
             }
             steps {
                 sh 'echo ${NAME}-${VERSION}.jar'

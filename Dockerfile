@@ -36,4 +36,5 @@ RUN set -x \
 	&& [ "$JAVA_HOME" = "$(docker-java-home)" ]
 
 COPY simple-java-maven-app/target/my-app-1.0-SNAPSHOT.jar /root
+ENV myCustomEnv "hello-world"
 # RUN java -jar /root/my-app-1.0-SNAPSHOT.jar
