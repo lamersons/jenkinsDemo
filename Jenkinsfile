@@ -1,4 +1,4 @@
-mavenAppHome = "simple-java-maven-app"
+mavenAppHome = "simple-java-maven-app";
 
 // def jen = Jenkins.getInstance();
 // def job = jen.getItem("${JOB_NAME}");
@@ -17,7 +17,7 @@ pipeline {
         }
     }
     parameters {
-      string(name: 'PERSON', defaultValue: 2.toString(), description: 'Who should I say hello to?')
+      string(name: 'PERSON', defaultValue: "Jack Dawn", description: 'Who should I say hello to?')
     }
     stages {
         stage('Build') {
