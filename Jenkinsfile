@@ -12,5 +12,15 @@ pipeline {
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'cd simple-java-maven-app; mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
     }
 }
