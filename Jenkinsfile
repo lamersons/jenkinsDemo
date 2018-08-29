@@ -10,7 +10,7 @@ pipeline {
             steps {
               sh 'echo "building application"'
               sh 'cd simple-java-maven-app'
-              sh 'mvn -B -DskipTests clean package'
+              sh 'mvn -f ./simple-java-maven-app/pom.xml -B-DskipTests clean package'
             }
         }
     }
