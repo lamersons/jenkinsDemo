@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-              sh 'echo hello-world'
-                // sh 'cd simple-java-maven-app'
-                // sh 'mvn -B -DskipTests clean package'
+              sh 'echo "building application"'
+              sh 'cd simple-java-maven-app'
+              sh 'mvn -B -DskipTests clean package'
             }
         }
     }
