@@ -1,3 +1,4 @@
+mavenAppHome = "simple-java-maven-app"
 
 pipeline {
     agent {
@@ -25,7 +26,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh './simple-java-maven-app/jenkins/scripts/deliver.sh'
+                sh './' + mavenAppHome + '/jenkins/scripts/deliver.sh'
             }
         }
     }
