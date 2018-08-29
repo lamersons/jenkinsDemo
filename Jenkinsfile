@@ -43,7 +43,6 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile.build'
                     dir '.'
-                    additionalBuildArgs  '--build-arg version=1.0.2'
                 }
             }
             steps {
