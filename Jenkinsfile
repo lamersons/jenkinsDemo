@@ -1,5 +1,13 @@
 mavenAppHome = "simple-java-maven-app"
 
+def jen = Jenkins.getInstance();
+def job = jen.getItem(${JOB_NAME});
+def builds = job.getBuilds()
+
+def printClosure = {
+  println("${it.getArtifactManager()?.root().exists()}")
+}
+
 pipeline {
     agent {
         docker {
@@ -12,6 +20,7 @@ pipeline {
             steps {
                 sh 'echo ">>>>> building.."'
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
+                builds.each(printClosure)
             }
         }
         stage('Test') {
