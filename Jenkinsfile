@@ -2,11 +2,11 @@ mavenAppHome = "simple-java-maven-app"
 
 def jen = Jenkins.getInstance();
 def job = jen.getItem(${JOB_NAME});
-def builds = job.getBuilds()
-
-def printClosure = {
-  println("${it.getArtifactManager()?.root().exists()}")
-}
+def builds = job.getBuilds();
+//
+// def printClosure = {
+//   println("${it.getArtifactManager()?.root().exists()}")
+// }
 // builds.each(printClosure)
 
 pipeline {
@@ -16,11 +16,11 @@ pipeline {
             args '-v /root/.m2:/root/.m2'
         }
     }
+    parameters {
+      string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Build') {
-            parameters {
-                string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-            }
             steps {
                 sh 'echo ">>>>> building.."'
                 sh 'cd simple-java-maven-app; mvn -B -DskipTests clean package'
