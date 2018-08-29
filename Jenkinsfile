@@ -1,8 +1,8 @@
 mavenAppHome = "simple-java-maven-app"
 
-def jen = Jenkins.getInstance();
-def job = jen.getItem("${JOB_NAME}");
-def builds = job.getBuilds();
+// def jen = Jenkins.getInstance();
+// def job = jen.getItem("${JOB_NAME}");
+// def builds = job.getBuilds();
 //
 // def printClosure = {
 //   println("${it.getArtifactManager()?.root().exists()}")
