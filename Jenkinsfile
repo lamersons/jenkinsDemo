@@ -1,6 +1,6 @@
 build_root = "/home/kali/Repos/jenkinsDemo/"
 vagrant_root = build_root + "/coreos-vagrant/"
-exec_remote_cmd = 'sshpass -p unuzan55 ssh lamersons@localhost cd ' + build_root + '; ';
+exec_remote_cmd = 'sshpass -p unuzan55 ssh lamersons@172.17.0.1 cd ' + build_root + '; ';
 
 pipeline {
   agent any
