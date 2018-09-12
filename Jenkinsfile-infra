@@ -12,9 +12,7 @@ exec_remote_cmd = 'sshpass -p unuzan55 ssh lamersons@localhost cd ' + build_root
 // builds.each(printClosure)
 
 pipeline {
-    agent {
-      any;
-    }
+    agent any
     // parameters {
     //   string(name: 'PERSON', defaultValue: "Jack Dawn", description: 'Who should I say hello to?')
     // }
