@@ -4,13 +4,13 @@ vagrant_root = build_root + "/coreos-vagrant/"
 // exec_vr_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
 exec_br_remote_cmd = "sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 'cd ${build_root};"
 exec_vr_remote_cmd = "sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 'cd ${vagrant_root} ;"
+get_etcd_discovery = sh(
+  script: 'curl https://discovery.etcd.io/new',
+  returnStdout: true
+)
 
 pipeline {
   agent any
-  get_etcd_discovery = sh(
-    script: 'curl https://discovery.etcd.io/new',
-    returnStdout: true
-  )
   stages {
     stage('rollout_init_infra') {
       steps {
