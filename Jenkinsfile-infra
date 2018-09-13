@@ -4,17 +4,19 @@ exec_br_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamerso
 exec_vr_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
 // exec_br_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + build_root + '; ';
 // exec_vr_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
+test = "test123"
 
 pipeline {
   agent any
   stages {
     stage('rollout_init_infra') {
       steps {
-        sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; rm -rf coreos-vagrant/"'
-        sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; git clone https://github.com/coreos/coreos-vagrant.git"'
-        sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/core-vagrant/; cp user-data.sample user-data; cp config.rb.sample config.rb"'
-        sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/core-vagrant/; cat user-data"'
+        sh "${test}"
+        // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; rm -rf coreos-vagrant/"'
+        // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; git clone https://github.com/coreos/coreos-vagrant.git"'
+        // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/coreos-vagran; cp user-data.sample user-data; cp config.rb.sample config.rb"'
+        // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/coreos-vagran; cat user-data"'
       }
-    }
+    }t
   }
 }
