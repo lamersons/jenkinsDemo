@@ -12,7 +12,7 @@ pipeline {
           get_etcd_discovery = sh(
             script: 'curl https://discovery.etcd.io/new',
             returnStdout: true
-          )
+          ).replaceAll("/", "\\/")
         }
         echo "${get_etcd_discovery}"
         // sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
@@ -24,4 +24,3 @@ pipeline {
     }
   }
 }
-.replaceAll("'", "\\'")
