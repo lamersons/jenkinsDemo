@@ -10,9 +10,9 @@ pipeline {
       steps {
         script {
           get_etcd_discovery = sh(
-            script: 'curl https://discovery.etcd.io/new',
+            script: 'curl -s https://discovery.etcd.io/new',
             returnStdout: true
-          ).replaceAll("/", "\\/")
+          ).replaceAll('s', 'ssssss')
         }
         echo "${get_etcd_discovery}"
         // sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
