@@ -1,20 +1,21 @@
 build_root = "/home/kali/Repos/jenkinsDemo/"
 vagrant_root = build_root + "/coreos-vagrant/"
-build_root_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + build_root + '; ';
-vagrant_root_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
+exec_build_root_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + build_root + '; ';
+exec_vagrant_root_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
 
 pipeline {
   agent any
   stages {
     stage('get_init_scripts') {
       steps {
-        sh exec_remote_cmd + "git clone https://github.com/coreos/coreos-vagrant.git"
+        sh exec_build_root_cmd + "git clone https://github.com/coreos/coreos-vagrant.git"
       }
     }
-    stage('set_config_settings') {
-      steps {
-        sh exec_remote_cmd + "git clone https://github.com/coreos/coreos-vagrant.git"
-      }
-    }
+    // stage('set_config_settings') {
+    //   steps {
+    //     sh exec_vagrant_root_cmd + "cp user-data.sample user-data; cp config.rb.sample config.rb"
+    //     // sh exec_vagrant_root_cmd + ""
+    //   }
+    // }
   }
 }
