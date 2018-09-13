@@ -20,8 +20,9 @@ pipeline {
         sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
         sh "${exec_vr_remote_cmd} sed -i \"s/#discovery: https:\\/\\/discovery.etcd.io\\/<token>/discovery: ${get_etcd_discovery}/g\" user-data'"
         sh "${exec_vr_remote_cmd} sed -i \"s/num_instances=1/num_instances=3/g\" config.rb'"
-        sh "${exec_vr_remote_cmd} sed -i \"s/update_channel=\'alpha\'/update_channel=\'stable\'/g\" config.rb'"
-        sh "${exec_vr_remote_cmd} cat config.rb'"
+        sh "${exec_vr_remote_cmd} sed -i \"s/alpha/stable/g\" config.rb'"
+        sh "${exec_vr_remote_cmd} vagrant up'"
+        sh "${exec_vr_remote_cmd} vagrant status'"
       }
     }
   }
