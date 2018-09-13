@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('rollout_init_infra') {
       steps {
-        sh exec_br_remote_cmd + "rm -rf " + vagrant_root
+        sh exec_br_remote_cmd + "sudo rm -rf " + vagrant_root
         sh exec_br_remote_cmd + "git clone https://github.com/coreos/coreos-vagrant.git"
         sh exec_vr_remote_cmd + "cp user-data.sample user-data; cp config.rb.sample config.rb"
         sh exec_vr_remote_cmd + "cat user-data"
