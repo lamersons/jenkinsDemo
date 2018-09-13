@@ -7,6 +7,10 @@ exec_vr_remote_cmd = "sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamerso
 
 pipeline {
   agent any
+  get_etcd_discovery = sh(
+    script: 'curl https://discovery.etcd.io/new',
+    returnStdout: true
+  )
   stages {
     stage('rollout_init_infra') {
       steps {
@@ -14,10 +18,6 @@ pipeline {
         sh "${exec_br_remote_cmd} git clone https://github.com/coreos/coreos-vagrant.git'"
         sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
         sh "${exec_vr_remote_cmd} cat user-data'"
-        get_etcd_discovery = sh (
-            script: 'curl https://discovery.etcd.io/new',
-            returnStdout: true
-        ).trim()
         echo "${get_etcd_discovery}"
       }
     }
