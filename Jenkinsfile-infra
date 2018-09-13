@@ -4,20 +4,20 @@ vagrant_root = build_root + "/coreos-vagrant/"
 // exec_vr_remote_cmd = 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 cd ' + vagrant_root + '; ';
 exec_br_remote_cmd = "sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 'cd ${build_root};"
 exec_vr_remote_cmd = "sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 'cd ${vagrant_root} ;"
-get_etcd_discovery = sh(
-  script: 'curl https://discovery.etcd.io/new',
-  returnStdout: true
-)
 
 pipeline {
   agent any
   stages {
     stage('rollout_init_infra') {
       steps {
-        sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
-        sh "${exec_br_remote_cmd} git clone https://github.com/coreos/coreos-vagrant.git'"
-        sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
-        sh "${exec_vr_remote_cmd} cat user-data'"
+        get_etcd_discovery = sh(
+          script: 'curl https://discovery.etcd.io/new',
+          returnStdout: true
+        )
+        // sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
+        // sh "${exec_br_remote_cmd} git clone https://github.com/coreos/coreos-vagrant.git'"
+        // sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
+        // sh "${exec_vr_remote_cmd} cat user-data'"
         echo "${get_etcd_discovery}"
       }
     }
