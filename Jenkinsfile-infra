@@ -10,7 +10,7 @@ pipeline {
       steps {
         script {
           get_etcd_discovery = sh(
-            script: "echo $(curl -s https://discovery.etcd.io/new) | sed -u 's/\//\\\//g'",
+            script: 'echo $(curl -s https://discovery.etcd.io/new) | sed -u "s/\//\\//g"',
             returnStdout: true
           )
         }
