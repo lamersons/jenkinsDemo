@@ -7,6 +7,7 @@ pipeline {
   agent any
   stages {
     stage('rollout_init_infra') {
+      echo "start"
       steps {
         script {
           get_etcd_discovery = sh(
@@ -14,7 +15,7 @@ pipeline {
             returnStdout: true
           )
         }
-        echo "${get_etcd_discovery}"
+        echo "hi - > ${get_etcd_discovery}"
         // sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
         // sh "${exec_br_remote_cmd} git clone https://github.com/coreos/coreos-vagrant.git'"
         // sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
