@@ -11,12 +11,12 @@ pipeline {
   stages {
     stage('rollout_init_infra') {
       steps {
-        sh "${test}"
+        echo "${test}"
         // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; rm -rf coreos-vagrant/"'
         // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/; git clone https://github.com/coreos/coreos-vagrant.git"'
         // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/coreos-vagran; cp user-data.sample user-data; cp config.rb.sample config.rb"'
         // sh 'sshpass -p unuzan55 ssh -oStrictHostKeyChecking=no lamersons@172.17.0.1 "cd /home/kali/Repos/jenkinsDemo/coreos-vagran; cat user-data"'
       }
-    }t
+    }
   }
 }
