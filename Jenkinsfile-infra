@@ -13,9 +13,8 @@ pipeline {
             script: 'curl https://discovery.etcd.io/new',
             returnStdout: true
           )
-          get_etcd_discovery2 = "${get_etcd_discovery}".replaceAll("/", "\\/")
         }
-        echo "${get_etcd_discovery2}"
+        echo "${get_etcd_discovery}".replaceAll("/", "\\/")
         // sh "${exec_br_remote_cmd} rm -rf coreos-vagrant/'"
         // sh "${exec_br_remote_cmd} git clone https://github.com/coreos/coreos-vagrant.git'"
         // sh "${exec_vr_remote_cmd} cp user-data.sample user-data; cp config.rb.sample config.rb'"
