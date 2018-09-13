@@ -9,7 +9,7 @@ pipeline {
     stage('rollout_init_infra') {
       steps {
         script {
-          get_etcd_discovery = sh(
+          str get_etcd_discovery = sh(
             script: 'curl https://discovery.etcd.io/new',
             returnStdout: true
           ).replaceAll("/", "\\/")
